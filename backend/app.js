@@ -1,3 +1,4 @@
+
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -5,17 +6,20 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const JWT_SECRET = 'your_secret_key_here'; // Change this in production!
-const APP_URL = 'http://localhost:5173'; // Change to your deployed frontend URL
+
+const JWT_SECRET = process.env.JWT_SECRET;
+const APP_URL = process.env.APP_URL;
 
 // Mailtrap SMTP config (can be used for password reset only)
 const transporter = nodemailer.createTransport({
-  host: 'sandbox.smtp.mailtrap.io',
-  port: 2525,
+  host: process.env.MAILTRAP_HOST,
+  port: process.env.MAILTRAP_PORT,
   auth: {
-    user: '96e33846d5a55b', // replace with your Mailtrap username
-    pass: 'b2c08a7705981c', // replace with your Mailtrap password
+    user: process.env.MAILTRAP_USER,
+    pass: process.env.MAILTRAP_PASS,
   },
 });
 
@@ -24,7 +28,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/finance-tracker');
+mongoose.connect(process.env.MONGODB_URI);
 
 // User Schema (no isVerified or verificationToken)
 const userSchema = new mongoose.Schema({
