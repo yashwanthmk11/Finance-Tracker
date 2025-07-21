@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply min-h-screen font-sans bg-gradient-to-br from-primary-light to-accent-light text-gray-900 dark:from-card-dark dark:to-primary-dark dark:text-gray-100 transition-colors duration-300;
+}
+
+#root {
+  @apply min-h-screen flex flex-col;
+}
