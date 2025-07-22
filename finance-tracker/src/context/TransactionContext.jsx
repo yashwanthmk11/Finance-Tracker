@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
 
-const API_URL = 'http://localhost:5000/api/transactions';
+const API_URL = 'https://finance-tracker-mrar.onrender.com/api/transactions';
 const TransactionContext = createContext();
 
 const initialState = {
