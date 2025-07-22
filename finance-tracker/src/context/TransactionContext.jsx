@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useReducer, useEffect, useState } from 'react';
+import React, { createContext, useReducer, useEffect, useState } from 'react';
 import { useAuth } from './AuthContext';
 
-const API_URL = 'https://finance-tracker-mrar.onrender.com/api/transactions';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/transactions`;
 const TransactionContext = createContext();
 
 const initialState = {
@@ -157,4 +157,4 @@ export const TransactionProvider = ({ children }) => {
   );
 };
 
-export const useTransactions = () => useContext(TransactionContext); 
+// Move useTransactions to a separate file to resolve Fast Refresh warning
